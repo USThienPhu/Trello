@@ -34,6 +34,8 @@ export class BoardsService {
     {
       throw new NotFoundException(`Board với ID "${id}" không tồn tại`);
     }
+
+    return board;
   }
 
   async update(id: string, updateBoardDto: UpdateBoardDto) {
