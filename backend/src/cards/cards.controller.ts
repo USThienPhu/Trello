@@ -12,9 +12,14 @@ export class CardsController {
     return this.cardsService.create(createCardDto);
   }
 
+  // @Get()
+  // findAllbyList(listId: string) {
+  //   return this.cardsService.findAllByList(listId);
+  // }
+
   @Get()
-  findAll(listId: string) {
-    return this.cardsService.findAllByList(listId);
+  findAll() {
+    return this.cardsService.findAll();
   }
 
   @Get(':id')

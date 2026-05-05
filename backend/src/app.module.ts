@@ -18,6 +18,7 @@ import { CardsModule } from './cards/cards.module';
       database: 'DB_Trello',
       autoLoadEntities: true,
       synchronize: false, // Để false vì bạn đã xây DB thủ công rồi
+      logging: true,
     }),
     UsersModule,
     BoardsModule,

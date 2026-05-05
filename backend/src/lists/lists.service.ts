@@ -1,4 +1,4 @@
-import { Injectable,NotFoundException } from '@nestjs/common';
+import { Injectable,NotFoundException , InternalServerErrorException} from '@nestjs/common';
 import { CreateListDto } from './dto/create-list.dto';
 import { UpdateListDto } from './dto/update-list.dto';
 import {List } from './entities/list.entity';
@@ -19,9 +19,21 @@ export class ListsService {
   }
 
   async findAll() {
-    return await this.listRepository.find({
+    try {
+      const results = await this.listRepository.find({
         relations: ['board'],
       });
+
+      if (!results || results.length === 0) {
+        // Chủ động ném lỗi 404 nếu không tìm thấy dữ liệu
+        throw new NotFoundException('Không tìm thấy danh sách nào');
+      }
+
+      return results;
+    } catch (error) {
+      // Nếu lỗi do database (sai tên cột, sai relation), ta ném lỗi BadRequest hoặc giữ nguyên 500
+      throw new InternalServerErrorException('Lỗi truy vấn cơ sở dữ liệu: ' + error.message);
+    }
   }
 
   async findOne(id: string) {

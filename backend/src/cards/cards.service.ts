@@ -1,4 +1,4 @@
-import { Injectable,  NotFoundException } from '@nestjs/common';
+import { Injectable,  NotFoundException, InternalServerErrorException } from '@nestjs/common';
 import { CreateCardDto } from './dto/create-card.dto';
 import { UpdateCardDto } from './dto/update-card.dto';
 import {Card} from '../cards/entities/card.entity';
@@ -13,15 +13,48 @@ export class CardsService {
   ) {}
 
   async create(createCardDto: CreateCardDto) {
-    const card = this.cardsRepository.create(createCardDto);
-    return await this.cardsRepository.save(card);
+    try { 
+      console.log(createCardDto);
+      const newCard = this.cardsRepository.create(createCardDto);
+      return await this.cardsRepository.save(newCard);
+    } catch(error){
+      throw new InternalServerErrorException('Lỗi truy vấn cơ sở dữ liệu: ' + error.message);
+    }
   }
 
-  async findAllByList(listId: string) {
-    return await this.cardsRepository.find({
-      where: { list_id: listId },
-      order: { position: 'ASC' }, // Trello cần sắp xếp theo vị trí thẻ
-    });
+  // async findAllByList(listId: string) {
+  //   try {
+  //     const result = await this.cardsRepository.find({
+  //       where: {list_id: listId},
+  //       order: {position: "ASC"},
+  //     });
+
+  //     if (!result || result.length === 0)
+  //     {
+  //       throw new NotFoundException(`Card với ID "${listId}" không tồn tại`);
+  //     }
+
+  //     return result;
+  //     } catch(error){
+  //     throw new InternalServerErrorException('Lỗi truy vấn cơ sở dữ liệu: ' + error.message);
+  //   } 
+  // }
+
+  async findAll() {
+    try {
+      const result = await this.cardsRepository.find({
+        order: {position: "ASC"},
+      });
+
+      if (!result || result.length === 0)
+      {
+        throw new NotFoundException(`Không tồn tại card nào cả`);
+      }
+
+      return result;
+      } catch(error){
+      throw new InternalServerErrorException('Lỗi truy vấn cơ sở dữ liệu: ' + error.message);
+    } 
   }
 
   async findOne(id: string) {

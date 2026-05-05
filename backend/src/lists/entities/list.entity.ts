@@ -16,7 +16,7 @@ export class List {
     position: number;
 
     @CreateDateColumn({ type: 'timestamptz' })
-    create_at: Date;
+    created_at: Date;
 
     @ManyToOne(() => Board)
     @JoinColumn({
