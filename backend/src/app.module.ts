@@ -19,7 +19,7 @@ import { AuthModule } from './auth/auth.module';
       database: 'DB_Trello',
       autoLoadEntities: true,
       synchronize: false, // Để false vì bạn đã xây DB thủ công rồi
-      logging: true,
+      logging: false,
     }),
     UsersModule,
     BoardsModule,
