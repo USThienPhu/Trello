@@ -23,6 +23,10 @@ export class ListOwnershipGuard implements CanActivate {
       throw new ForbiddenException('User not authenticated');
     }
 
+    if (user.role === 'admin') {
+      return true;
+    }
+
     const boardId = await this.listsService.findListBoardId(listId);
     const ownerId = await this.boardsService.findBoardOwnerId(boardId);
 

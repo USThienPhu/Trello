@@ -23,6 +23,10 @@ export class CardOwnershipGuard implements CanActivate {
       throw new ForbiddenException('User not authenticated');
     }
 
+    if (user.role === 'admin') {
+      return true;
+    }
+
     const boardId = await this.cardsService.findCardBoardId(cardId);
     const ownerId = await this.boardsService.findBoardOwnerId(boardId);
 

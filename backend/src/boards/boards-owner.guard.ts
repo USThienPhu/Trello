@@ -19,6 +19,10 @@ export class BoardOwnershipGuard implements CanActivate {
       throw new ForbiddenException('User not authenticated');
     }
 
+    if (user.role === 'admin') {
+      return true;
+    }
+
     const ownerId = await this.boardsService.findBoardOwnerId(boardId);
 
     if (ownerId !== user.id) {
