@@ -90,4 +90,15 @@ export class CardsService {
     await this.cardsRepository.remove(card)
     return { message: `Đã xóa thành công bảng có ID ${id}` };
   }
+
+  async findCardBoardId(cardId: string): Promise<string> {
+    const card = await this.cardsRepository.findOne({
+      where: { id: cardId },
+      relations: ['list', 'list.board'],
+    });
+    if (!card) {
+      throw new NotFoundException(`Card với ID "${cardId}" không tồn tại`);
+    }
+    return card.list.board_id;
+  }
 }

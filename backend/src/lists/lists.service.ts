@@ -68,4 +68,15 @@ export class ListsService {
     await this.listRepository.remove(list);
     return { message: `Đã xóa thành công list có ID ${id}` };
   }
+
+  async findListBoardId(listId: string): Promise<string> {
+    const list = await this.listRepository.findOne({
+      where: { id: listId },
+      relations: ['board'],
+    });
+    if (!list) {
+      throw new NotFoundException(`List với ID "${listId}" không tồn tại`);
+    }
+    return list.board_id;
+  }
 }

@@ -5,7 +5,6 @@ import {Board} from '../../boards/entities/board.entity';
 export class List {
     @PrimaryGeneratedColumn('uuid')
     id: string;
-
     @Column()
     title: string;
 
