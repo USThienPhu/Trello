@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { List } from '../../lists/entities/list.entity'; 
 
-@Entity('CARDS')
+@Entity('cards')
 export class Card {
   @PrimaryGeneratedColumn('uuid')
   id: string;

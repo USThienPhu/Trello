@@ -63,4 +63,15 @@ export class BoardsService {
     await this.boardsRepository.remove(board)
     return { message: `Đã xóa thành công bảng có ID ${id}` };
   }
+
+  async findBoardOwnerId(boardId: string): Promise<string> {
+    const board = await this.boardsRepository.findOne({
+      where: { id: boardId },
+      relations: ['owner'],
+    });
+    if (!board) {
+      throw new NotFoundException(`Board với ID "${boardId}" không tồn tại`);
+    }
+    return board.owner_id;
+  }
 }

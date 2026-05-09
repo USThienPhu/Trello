@@ -7,6 +7,7 @@ create table USERS (
 	password_hashed text not null,
 	fullname varchar(100),
 	avatar_url text,
+	role varchar(20) default 'user',
 	is_active boolean,
 	created_at TIMESTAMPTZ DEFAULT NOW()	
 )
