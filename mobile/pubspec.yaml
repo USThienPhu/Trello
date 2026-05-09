@@ -1,0 +1,51 @@
+name: mobile
+description: "Trello-like application"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.4.0
+  riverpod_annotation: ^2.3.0
+
+  # Networking
+  dio: ^5.4.0
+
+  # Security
+  flutter_secure_storage: ^9.0.0
+
+  # Serialization
+  json_annotation: ^4.8.0
+  freezed_annotation: ^2.4.0
+
+  # Routing
+  go_router: ^13.0.0
+
+  # Utils
+  intl: ^0.20.2
+  easy_localization: ^3.0.0
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  # Code Generation
+  riverpod_generator: ^2.3.0
+  build_runner: ^2.4.0
+  json_serializable: ^6.7.0
+  freezed: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/translations/
