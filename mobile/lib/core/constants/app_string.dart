@@ -1,34 +1,36 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class AppString {
   AppString._();
 
   // Auth
-  static const String login = 'Login';
-  static const String register = 'Register';
-  static const String email = 'Email';
-  static const String password = 'Password';
-  static const String name = 'Name';
-  static const String logout = 'Logout';
+  static String get login => 'login'.tr();
+  static String get register => 'register'.tr();
+  static String get email => 'email'.tr();
+  static String get password => 'password'.tr();
+  static String get name => 'name'.tr();
+  static String get logout => 'logout'.tr();
 
   // Entities
-  static const String board = 'Board';
-  static const String boards = 'Boards';
-  static const String trelloList = 'List';
-  static const String lists = 'Lists';
-  static const String card = 'Card';
-  static const String cards = 'Cards';
+  static String get board => 'board'.tr();
+  static String get boards => 'boards'.tr();
+  static String get trelloList => 'list'.tr();
+  static String get lists => 'lists'.tr();
+  static String get card => 'card'.tr();
+  static String get cards => 'cards'.tr();
 
   // Actions
-  static const String create = 'Create';
-  static const String update = 'Update';
-  static const String delete = 'Delete';
-  static const String save = 'Save';
-  static const String cancel = 'Cancel';
-  static const String confirm = 'Confirm';
+  static String get create => 'create'.tr();
+  static String get update => 'update'.tr();
+  static String get delete => 'delete'.tr();
+  static String get save => 'save'.tr();
+  static String get cancel => 'cancel'.tr();
+  static String get confirm => 'confirm'.tr();
 
   // Messages
-  static const String loading = 'Loading...';
-  static const String error = 'Error';
-  static const String success = 'Success';
-  static const String noData = 'No data';
-  static const String retry = 'Retry';
+  static String get loading => 'loading'.tr();
+  static String get error => 'error'.tr();
+  static String get success => 'success'.tr();
+  static String get noData => 'noData'.tr();
+  static String get retry => 'retry'.tr();
 }
