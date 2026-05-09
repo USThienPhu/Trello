@@ -14,11 +14,11 @@ import { AuthModule } from './auth/auth.module';
       type: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres', // Thay bằng user của bạn
-      password: 'phuPK2005@', // Thay bằng pass của bạn
+      username: 'postgres',
+      password: 'phuPK2005@',
       database: 'DB_Trello',
       autoLoadEntities: true,
-      synchronize: false, // Để false vì bạn đã xây DB thủ công rồi
+      synchronize: false,
       logging: false,
     }),
     UsersModule,

@@ -4,68 +4,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a NestJS backend for a Trello clone application. It uses TypeORM with PostgreSQL for data persistence. The database schema is created manually using SQL files (not synced automatically).
+This is a NestJS backend for a Trello-like application with board management. The API uses JWT authentication, role-based access control, and PostgreSQL with TypeORM.
 
 ## Common Commands
 
 ```bash
-# Development
-cd backend
-npm run start:dev   # or: npm run s  - Start with hot reload
+# Development (watch mode)
+npm run start          # or: npm run s
 
-# Build
-npm run build
+# Tests
+npm run test           # run all tests
+npm run test:watch    # watch mode
+npm run test:path-to-file # run single test file
 
 # Linting
 npm run lint
 
-# Testing
-npm run test                    # Run all tests
-npm run test:watch             # Watch mode
-npm run test:cov               # With coverage
-npm run test:e2e               # E2E tests
-
-# Format
-npm run format
+# Build
+npm run build
 ```
 
 ## Architecture
 
 ### Module Structure
-```
-backend/src/
-├── app.module.ts           # Root module (TypeORM config here)
-├── main.ts                 # Bootstrap
-├── users/                  # User management
-├── boards/                 # Board CRUD
-├── lists/                 # Lists within boards
-└── cards/                 # Cards within lists
-```
+- **src/auth/** - JWT/Local authentication, JWT strategy, RolesGuard
+- **src/users/** - User management module (admin-only full CRUD)
+- **src/boards/** - Board CRUD with ownership guard (BoardOwnershipGuard)
+- **src/lists/** - Lists belonging to boards
+- **src/cards/** - Cards belonging to lists
 
 ### Entity Relationships
-- User → Boards (one-to-many via owner_id)
-- Board → Lists (one-to-many via board_id)
-- List → Cards (one-to-many via list_id)
+```
+User (uuid)
+  └── Board (owner_id -> User.id)
+        └── List (board_id -> Board.id)
+              └── Card (list_id -> List.id)
+```
 
-### Entity Fields
-- **Board**: id, title, description, visibility, owner_id, background_color, create_at
-- **List**: id, title, board_id, position, created_at (position for ordering)
-- **Card**: id, list_id, title, description, position, due_date, is_completed, created_at
-- **User**: id, email, password, name, create_at
+### Authentication & Authorization
+- JWT token expires in 7 days, stored in auth.module.ts ('JWT_SECRET')
+- Roles: `user`, `admin` (stored in User.role column)
+- RolesGuard restricts endpoints by role (use @Roles() decorator)
+- Ownership guards (e.g., BoardOwnershipGuard) enforce: owner or admin can modify
 
-### Database Configuration
-- PostgreSQL on localhost:5432
-- Database: `DB_Trello`
-- TypeORM `synchronize: false` - schema is managed via SQL files in `TrelloDB/`
-- Entities: User, Board, List, Card (all use UUID primary keys)
+### API Documentation
+- Swagger UI available at `/api` endpoint
+- All protected endpoints require Bearer token in Authorization header
 
-### Key Files
-- Backend entry: `backend/src/main.ts`
-- TypeORM config: `backend/src/app.module.ts`
-- Database SQL: `TrelloDB/` folder (Boards.sql, Lists.sql, Cards.sql, Users.sql, Board_members.sql)
+## Database
 
-## Notes
+PostgreSQL database: `DB_Trello` (host: localhost:5432)
+- TypeORM synchronize is `false` - use manual migrations in `../TrelloDB/` folder
 
-- Database credentials are hardcoded in `app.module.ts` - you may need to update them for your local setup
-- All entities use `@PrimaryGeneratedColumn('uuid')` for ID generation
-- Dates use `timestamptz` type for timezone-aware timestamps
+## Key Patterns
+
+- DTOs use class-validator + @nestjs/swagger decorators
+- Guards are applied at controller level, not service level
+- Owner guards check ownership via service queries
+- Admin bypasses ownership checks in guards
+
+## Configuration
+
+Database credentials are hardcoded in src/app.module.ts (should use environment variables)

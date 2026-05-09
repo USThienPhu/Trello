@@ -4,19 +4,31 @@ import { UpdateCardDto } from './dto/update-card.dto';
 import {Card} from '../cards/entities/card.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
+import { TrelloGateway } from '../trello.gateway';
+import { ListsService } from '../lists/lists.service';
 
 @Injectable()
 export class CardsService {
   constructor(
     @InjectRepository(Card)
     private cardsRepository: Repository<Card>,
+    private listsService: ListsService,
+    private trelloGateway: TrelloGateway,
   ) {}
 
   async create(createCardDto: CreateCardDto) {
-    try { 
+    try {
       console.log(createCardDto);
       const newCard = this.cardsRepository.create(createCardDto);
-      return await this.cardsRepository.save(newCard);
+      const savedCard = await this.cardsRepository.save(newCard);
+
+      // Emit socket event
+      const boardId = await this.getBoardIdByList(createCardDto.list_id);
+      if (boardId && this.trelloGateway) {
+        this.trelloGateway.emitCardCreated(boardId, savedCard);
+      }
+
+      return savedCard;
     } catch(error){
       throw new InternalServerErrorException('Lỗi truy vấn cơ sở dữ liệu: ' + error.message);
     }
@@ -75,7 +87,15 @@ export class CardsService {
       ...updateCardDto,
     });
     if (!card) throw new NotFoundException(`Card #${id} not found`);
-    return this.cardsRepository.save(card);
+    const savedCard = await this.cardsRepository.save(card);
+
+    // Emit socket event
+    const boardId = await this.findCardBoardId(id);
+    if (boardId && this.trelloGateway) {
+      this.trelloGateway.emitCardUpdated(boardId, savedCard);
+    }
+
+    return savedCard;
   }
 
   async remove(id: string) {
@@ -87,7 +107,16 @@ export class CardsService {
       throw new NotFoundException(`Card với ID "${id}" không tồn tại`);
     }
 
+    // Get boardId before deleting
+    const boardId = await this.findCardBoardId(id);
+
     await this.cardsRepository.remove(card)
+
+    // Emit socket event
+    if (boardId && this.trelloGateway) {
+      this.trelloGateway.emitCardDeleted(boardId, id);
+    }
+
     return { message: `Đã xóa thành công bảng có ID ${id}` };
   }
 
@@ -100,5 +129,9 @@ export class CardsService {
       throw new NotFoundException(`Card với ID "${cardId}" không tồn tại`);
     }
     return card.list.board_id;
+  }
+
+  private async getBoardIdByList(listId: string): Promise<string> {
+    return await this.listsService.findListBoardId(listId);
   }
 }
