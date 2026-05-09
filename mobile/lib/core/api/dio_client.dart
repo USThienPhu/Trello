@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../config/app_config.dart';
-import '../auth/token_storage.dart';
+import 'package:mobile/core/config/app_config.dart';
+import 'package:mobile/core/auth/token_storage.dart';
 
 final dioProvider = Provider<Dio>((ref) {
   final dio = Dio(

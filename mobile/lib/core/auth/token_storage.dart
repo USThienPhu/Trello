@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../config/app_config.dart';
+import 'package:mobile/core/config/app_config.dart';
 
 final tokenStorageProvider = Provider<TokenStorage>((ref) => TokenStorage());
 
