@@ -4,7 +4,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:mobile/app.dart';
 
-void main() {
+void main() async  {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
@@ -12,8 +12,8 @@ void main() {
       child: EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('vi')],
         fallbackLocale: const Locale('en'),
-        startLocale: const Locale('en'), 
-        assetLoader: const RootBundleAssetLoader(),
+        startLocale: const Locale('vi'),
+        useOnlyLangCode: true,
         path: 'assets/translations',
         child: const App(),
       ),
