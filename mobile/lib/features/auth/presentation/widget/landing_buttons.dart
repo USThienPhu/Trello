@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile/core/constants/app_colors.dart';
 import 'package:mobile/core/constants/app_spacing.dart';
 import 'package:mobile/core/constants/app_radius.dart';
+import 'package:mobile/core/constants/app_string.dart';
+import 'package:mobile/core/constants/app_value.dart';
 
 class LandingButtons extends StatelessWidget {
   final VoidCallback onLogin;
@@ -24,15 +26,15 @@ class LandingButtons extends StatelessWidget {
           child: ElevatedButton(
             onPressed: onLogin,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.white,
-              foregroundColor: AppColors.trelloBlue,
+              backgroundColor: AppColors.gray,
+              foregroundColor: AppColors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppRadius.button),
               ),
               elevation: 0,
             ),
-            child: const Text(
-              'Login',
+            child: Text(
+              AppString.login,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
@@ -40,7 +42,7 @@ class LandingButtons extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: AppSpacing.md),
+        const SizedBox(height: AppSize.s16),
         // Sign Up button (outlined)
         SizedBox(
           width: double.infinity,
@@ -48,14 +50,14 @@ class LandingButtons extends StatelessWidget {
           child: OutlinedButton(
             onPressed: onSignUp,
             style: OutlinedButton.styleFrom(
-              foregroundColor: Colors.white,
-              side: const BorderSide(color: Colors.white, width: 2),
+              foregroundColor: AppColors.gray,
+              side: const BorderSide(color: AppColors.gray, width: 2),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppRadius.button),
               ),
             ),
-            child: const Text(
-              'Sign Up',
+            child: Text(
+              AppString.signUp,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,

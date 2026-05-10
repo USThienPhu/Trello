@@ -49,10 +49,18 @@ flutter:
   uses-material-design: true
 
   fonts:
-    - family: Charlie
+    - family: SansSerif
       fonts:
-        - asset: assets/fonts/CharliePersonalUse-axMYx.otf
-
+        - asset: assets/fonts/OpenSans_Condensed-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/OpenSans_Condensed-Light.ttf
+          weight: 300
+        - asset: assets/fonts/OpenSans_Condensed-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/OpenSans_Condensed-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/OpenSans_Condensed-SemiBold.ttf
+          weight: 600
   assets:
     - assets/translations/
     - assets/pictures/

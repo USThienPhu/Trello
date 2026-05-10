@@ -9,7 +9,7 @@ class AppString {
 
   // Auth
   static String get login => 'login'.tr();
-  static String get register => 'register'.tr();
+  static String get signUp => 'signUp'.tr();
   static String get email => 'email'.tr();
   static String get password => 'password'.tr();
   static String get name => 'name'.tr();
@@ -37,4 +37,7 @@ class AppString {
   static String get success => 'success'.tr();
   static String get noData => 'noData'.tr();
   static String get retry => 'retry'.tr();
+
+  // Landing screen
+  static String get landingText => 'landingText'.tr();
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/core/constants/app_colors.dart';
-import 'package:mobile/core/constants/app_spacing.dart';
+import 'package:mobile/core/constants/app_value.dart';
 import 'package:mobile/core/theme/device_value.dart';
 import 'package:mobile/features/auth/presentation/widget/landing_logo.dart';
 import 'package:mobile/features/auth/presentation/widget/landing_buttons.dart';
+import 'package:mobile/core/common_widgets/app_name.dart'; 
 
 class LandingScreen extends StatelessWidget {
   final VoidCallback onLogin;
@@ -17,7 +18,7 @@ class LandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final padding = DeviceValue.get(AppSpacing.lg);
+    final padding = DeviceValue.get(AppSize.spacingLg);
 
     return Scaffold(
       body: Container(
@@ -29,14 +30,16 @@ class LandingScreen extends StatelessWidget {
             padding: EdgeInsets.all(padding),
             child: Column(
               children: [
-                const Spacer(flex: 2),
+                // const Spacer(flex: 2),
+                const AppName(),
+                SizedBox(height: DeviceValue.get(AppSize.spacingXxl)),
                 const LandingLogo(),
                 const Spacer(flex: 2),
                 LandingButtons(
                   onLogin: onLogin,
                   onSignUp: onSignUp,
                 ),
-                SizedBox(height: DeviceValue.get(AppSpacing.xxl)),
+                SizedBox(height: DeviceValue.get(AppSize.spacingXxl)),
               ],
             ),
           ),

@@ -8,7 +8,7 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(AppString.register),
+        child: Text(AppString.signUp),
       ),
     );
   }

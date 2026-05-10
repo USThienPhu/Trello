@@ -7,14 +7,14 @@ class AppTypography {
   static TextStyle get boardTitle => const TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
-        color: AppColors.textLight,
+        color: AppColors.white,
         letterSpacing: -0.5,
       );
 
   static TextStyle get boardTitleSmall => const TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.bold,
-        color: AppColors.textLight,
+        color: AppColors.white,
         letterSpacing: -0.5,
       );
 
@@ -40,7 +40,7 @@ class AppTypography {
   static TextStyle get memberInitials => const TextStyle(
         fontSize: 11,
         fontWeight: FontWeight.w500,
-        color: AppColors.textLight,
+        color: AppColors.white,
       );
 
   static TextStyle get button => const TextStyle(

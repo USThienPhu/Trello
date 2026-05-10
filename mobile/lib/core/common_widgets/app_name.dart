@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/core/constants/app_colors.dart';
-import 'package:mobile/core/constants/app_size.dart';
+import 'package:mobile/core/constants/app_value.dart';
 
 class AppName extends StatelessWidget {
   final double fontSize;
 
   const AppName({
     super.key,
-    this.fontSize = AppSize.s32,
+    this.fontSize = AppSize.s48,
   });
 
   @override
@@ -15,10 +15,10 @@ class AppName extends StatelessWidget {
     return Text(
       _appName,
       style: TextStyle(
-        fontFamily: 'Charlie',
+        fontFamily: 'SanSerif',
         fontSize: fontSize,
         fontWeight: FontWeight.bold,
-        color: AppColors.textLight,
+        color: AppColors.white,
         letterSpacing: -1,
       ),
     );

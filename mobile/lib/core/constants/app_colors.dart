@@ -40,7 +40,6 @@ class AppColors {
   static const Color divider = Color(0xFFDFE1E6);
   static const Color textPrimary = Color(0xFF172B4D);
   static const Color textSecondary = Color(0xFF5E6C84);
-  static const Color textLight = Color(0xFFFFFFFF);
 
   // Interactive states
   static const Color hover = Color(0xFF091E4214);
@@ -77,4 +76,5 @@ class AppColors {
   // Basic colors
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
+  static const Color gray = Color.fromARGB(255, 214, 213, 213);
 }
