@@ -4,6 +4,7 @@ import 'package:mobile/core/constants/app_value.dart';
 import 'package:mobile/core/theme/device_value.dart';
 import 'package:mobile/features/auth/presentation/widget/landing_logo.dart';
 import 'package:mobile/features/auth/presentation/widget/landing_buttons.dart';
+import 'package:mobile/features/auth/presentation/widget/auth_footer_links.dart';
 import 'package:mobile/core/common_widgets/app_name.dart'; 
 
 class LandingScreen extends StatelessWidget {
@@ -39,7 +40,9 @@ class LandingScreen extends StatelessWidget {
                   onLogin: onLogin,
                   onSignUp: onSignUp,
                 ),
-                SizedBox(height: DeviceValue.get(AppSize.spacingXxl)),
+                SizedBox(height: DeviceValue.get(AppSize.spacingLg)),
+                const AuthFooterLinks(),
+                SizedBox(height: DeviceValue.get(AppSize.s80)),
               ],
             ),
           ),
