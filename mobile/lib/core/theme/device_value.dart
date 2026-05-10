@@ -48,5 +48,5 @@ class DeviceValue {
   static double get(double value) => instance.scale(value);
 
   /// Get percentage of device width (e.g., percent80 = 0.8 × deviceWidth)
-  static double percent(double percent) => deviceWidth * percent;
+  static double percent(double percent) => instance.deviceWidth * percent;
 }

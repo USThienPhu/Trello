@@ -19,8 +19,6 @@ class LandingLogo extends StatelessWidget {
           width: imageSize,
           height: imageSize,
         ),
-        SizedBox(height: DeviceValue.get(AppSpacing.lg)),
-        AppName(fontSize: fontSize),
       ],
     );
   }
