@@ -13,6 +13,7 @@ class AppSize {
   static const double s48 = 48.0;
   static const double s56 = 56.0;
   static const double s64 = 64.0;
+  static const double s120 = 120.0;
 
   // Radius
   static const double r4 = 4.0;

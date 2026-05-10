@@ -3,6 +3,10 @@ import 'package:easy_localization/easy_localization.dart';
 class AppString {
   AppString._();
 
+  // App
+  static const String appName = 'Trello';
+  static const String tagline = 'Manage your tasks with ease';
+
   // Auth
   static String get login => 'login'.tr();
   static String get register => 'register'.tr();

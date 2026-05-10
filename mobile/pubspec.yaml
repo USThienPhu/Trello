@@ -47,5 +47,13 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  fonts:
+    - family: Charlie
+      fonts:
+        - asset: assets/fonts/CharliePersonalUse-axMYx.otf
+
   assets:
     - assets/translations/
+    - assets/pictures/
+    - assets/fonts/
