@@ -12,6 +12,7 @@ void main() {
       child: EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('vi')],
         fallbackLocale: const Locale('en'),
+        startLocale: const Locale('en'), 
         assetLoader: const RootBundleAssetLoader(),
         path: 'assets/translations',
         child: const App(),
