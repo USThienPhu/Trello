@@ -40,4 +40,8 @@ class AppString {
 
   // Landing screen
   static String get landingText => 'landingText'.tr();
+  static String get termsOfService => 'termsOfService'.tr();
+  static String get privacyPolicy => 'privacyPolicy'.tr();
+  static String get contactSupport => 'contactSupport'.tr();
+  static String get termOfServiceText => 'termOfServiceText'.tr();
 }

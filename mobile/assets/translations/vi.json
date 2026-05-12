@@ -22,5 +22,9 @@
   "success": "Thành công",
   "noData": "Không có dữ liệu",
   "retry": "Thử lại",
-  "landingText": "Tổ chức mọi thứ, dễ dàng"
+  "landingText": "Tổ chức mọi thứ, dễ dàng",
+  "termsOfService": "Điều khoản dịch vụ",
+  "privacyPolicy": "Chính sách bảo mật",
+  "contactSupport": "Liên hệ hỗ trợ",
+  "termOfServiceText": "Bằng cách đăng ký, bạn đồng ý với "
 }

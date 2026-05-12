@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Singleton that stores device dimensions and calculates scales.
-///
-/// Initialize once in MyApp.build() with DeviceValue.initialize(context)
-/// Then use anywhere without passing context.
 class DeviceValue {
   DeviceValue._();
 
