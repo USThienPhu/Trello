@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mobile/core/constants/app_colors.dart';
 import 'package:mobile/core/constants/app_value.dart';
 import 'package:mobile/core/theme/device_value.dart';
+import 'package:mobile/core/widgets/link_text.dart';
+import 'package:mobile/core/utils/url_launcher_utils.dart';
 import 'package:mobile/features/auth/presentation/widget/landing_logo.dart';
 import 'package:mobile/features/auth/presentation/widget/landing_buttons.dart';
 import 'package:mobile/features/auth/presentation/widget/auth_footer_links.dart';
@@ -41,7 +43,11 @@ class LandingScreen extends StatelessWidget {
                   onSignUp: onSignUp,
                 ),
                 SizedBox(height: DeviceValue.get(AppSize.spacingLg)),
-                const AuthFooterLinks(),
+                AuthFooterLinks(
+                  onNotification: () => UrlHelper.openUrl(LinkText.termsOfService),
+                  onPrivacyPolicy: () => UrlHelper.openUrl(LinkText.privacyPolicy),
+                  onContactSupport: () => UrlHelper.openUrl(LinkText.contactSupport),
+                ),
                 SizedBox(height: DeviceValue.get(AppSize.s80)),
               ],
             ),

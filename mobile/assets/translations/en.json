@@ -22,5 +22,9 @@
   "success": "Success",
   "noData": "No data",
   "retry": "Retry",
-  "landingText": "Organize anything, effortlessly"
+  "landingText": "Organize anything, effortlessly",
+  "termsOfService": "Terms of Service",
+  "privacyPolicy": "Privacy Policy",
+  "contactSupport": "Contact Support",
+  "termOfServiceText": "By signing up, you agree to our "
 }
