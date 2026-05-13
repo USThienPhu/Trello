@@ -3,6 +3,7 @@ import 'package:mobile/core/constants/app_colors.dart';
 import 'package:mobile/core/constants/app_value.dart';
 import 'package:mobile/core/constants/app_string.dart';
 import 'package:flutter/gestures.dart';
+import 'package:mobile/core/theme/device_value.dart';
 
 class AuthFooterLinks extends StatelessWidget {
   final VoidCallback? onNotification;
@@ -18,6 +19,7 @@ class AuthFooterLinks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textSize = DeviceValue.get(AppSize.s12);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -26,85 +28,48 @@ class AuthFooterLinks extends StatelessWidget {
           TextSpan(
             text: AppString.termOfServiceText,
             style: TextStyle(
-              color: AppColors.white.withOpacity(0.7),
-              fontSize: AppSize.s10,
+              color: AppColors.white,
+              fontSize: textSize,
             ),
             children: [
               TextSpan(
                 text: AppString.termsOfService,
-                style: TextStyle(decoration: TextDecoration.underline),
-                recognizer: TapGestureRecognizer()..onTap = () => onNotification,
-                children: [
-                  TextSpan(
-                    text: " and ",
-                    style: TextStyle(decoration: TextDecoration.none),
-                  ),
-                  TextSpan(
-                    text: AppString.privacyPolicy,
-                    style: TextStyle(decoration: TextDecoration.underline),
-                    recognizer: TapGestureRecognizer()..onTap = () => onPrivacyPolicy,
-                  ),
-                ],
-              )
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.white,
+                ),
+                recognizer: TapGestureRecognizer()..onTap = onNotification,
+              ),
+              const TextSpan(text: " and "),
+              TextSpan(
+                text: AppString.privacyPolicy,
+                style: TextStyle(
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.white,
+                ),
+                recognizer: TapGestureRecognizer()..onTap = onPrivacyPolicy,
+              ),
             ],
           ),
           textAlign: TextAlign.center,
         ),
-
-
-
-        // _LinkText(
-        //   // message: "By signing up, you agree to our ",
-        //   message: AppString.termOfServiceText,
-        //   clickAblMessage: AppString.termsOfService,
-        //   onTap: onNotification,
-        // ),
-        // _LinkText(
-        //   message: "Privacy Policy",
-        //   clickAblMessage: AppString.privacyPolicy,
-        //   onTap: onPrivacyPolicy,
-        // ),
-        _LinkText(  
-          message: "Contact Support",
-          clickAblMessage: AppString.contactSupport,
-          onTap: onContactSupport,
-        ),
-      ],
-    );
-  }
-
-}
-
-class _LinkText extends StatelessWidget {
-  final String? message;
-  final String clickAblMessage;
-  final VoidCallback? onTap;
-
-  const _LinkText({
-    required this.clickAblMessage ,
-    this.message,
-    this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text.rich(
-      TextSpan(
-        text: message,
-        children: [
+        SizedBox(height: DeviceValue.get(AppSize.s12)),
+        Text.rich(
           TextSpan(
-            text: clickAblMessage,
-            style: TextStyle(decoration: TextDecoration.underline),
-            recognizer: TapGestureRecognizer()..onTap = () => onTap,
-          )
-        ],
-        style: TextStyle(
-          color: AppColors.white.withOpacity(0.7),
-          fontSize: AppSize.s10,
-          decoration: TextDecoration.underline,
-        ),
-      ),
-      textAlign: TextAlign.center,
+                text: AppString.contactSupport,
+                style: TextStyle(
+                  color: AppColors.white,
+                  fontSize: textSize,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.white,
+                  ),
+                recognizer: TapGestureRecognizer()..onTap = onContactSupport,
+          ),
+          textAlign: TextAlign.center,
+          ),
+      ],        
     );
   }
+
 }
+
