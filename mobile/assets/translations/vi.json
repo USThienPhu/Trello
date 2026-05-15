@@ -26,5 +26,10 @@
   "termsOfService": "Điều khoản dịch vụ",
   "privacyPolicy": "Chính sách bảo mật",
   "contactSupport": "Liên hệ hỗ trợ",
-  "termOfServiceText": "Bằng cách đăng ký, bạn đồng ý với "
+  "termOfServiceText": "Bằng cách đăng ký, bạn đồng ý với ",
+  "createYourAccount": "Tạo tài khoản của bạn",
+  "signUpToGetStarted": "Đăng ký để bắt đầu",
+  "confirmPassword": "Xác nhận mật khẩu",
+  "alreadyHaveAccount": "Bạn đã có tài khoản?",
+  "logIn": "Đăng nhập"
 }

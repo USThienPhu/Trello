@@ -44,4 +44,11 @@ class AppString {
   static String get privacyPolicy => 'privacyPolicy'.tr();
   static String get contactSupport => 'contactSupport'.tr();
   static String get termOfServiceText => 'termOfServiceText'.tr();
+
+  // Register screen
+  static String get createYourAccount => 'createYourAccount'.tr();
+  static String get signUpToGetStarted => 'signUpToGetStarted'.tr();
+  static String get confirmPassword => 'confirmPassword'.tr();
+  static String get alreadyHaveAccount => 'alreadyHaveAccount'.tr();
+  static String get logIn => 'logIn'.tr();
 }

@@ -26,5 +26,10 @@
   "termsOfService": "Terms of Service",
   "privacyPolicy": "Privacy Policy",
   "contactSupport": "Contact Support",
-  "termOfServiceText": "By signing up, you agree to our "
+  "termOfServiceText": "By signing up, you agree to our ",
+  "createYourAccount": "Create your account",
+  "signUpToGetStarted": "Sign up to get started",
+  "confirmPassword": "Confirm password",
+  "alreadyHaveAccount": "Already have an account?",
+  "logIn": "Log in"
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mobile/core/constants/app_colors.dart';
-import 'package:mobile/core/constants/app_spacing.dart';
 import 'package:mobile/core/constants/app_radius.dart';
 import 'package:mobile/core/constants/app_string.dart';
 import 'package:mobile/core/constants/app_value.dart';
